@@ -14,14 +14,15 @@ export const GameInterface: React.FC = () => {
   console.log('Game state:', gameState);
   
   const {
-    currentPair,
+    leftEvent,
+    rightEvent,
     score,
     streak,
     questionsAnswered,
     isRevealed,
-    selectedEvent,
+    selectedAnswer,
     isCorrect,
-    selectEvent,
+    selectAnswer,
     nextQuestion,
     resetGame
   } = gameState;
@@ -29,17 +30,18 @@ export const GameInterface: React.FC = () => {
   const [scoreAnimating, setScoreAnimating] = useState(false);
   const isGameComplete = questionsAnswered >= GAME_TOTAL_QUESTIONS;
 
-  console.log('Current pair:', currentPair);
+  console.log('Left event:', leftEvent);
+  console.log('Right event:', rightEvent);
   console.log('Is game complete:', isGameComplete);
 
-  // Show debug info if no current pair
-  if (!currentPair) {
+  // Show debug info if no events
+  if (!leftEvent || !rightEvent) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background p-4">
         <div className="text-center space-y-4">
           <div className="text-2xl font-bold text-foreground">Loading Game...</div>
           <div className="text-muted-foreground">
-            Debug: currentPair is {currentPair ? 'available' : 'null'}
+            Debug: leftEvent is {leftEvent ? 'available' : 'null'}, rightEvent is {rightEvent ? 'available' : 'null'}
           </div>
           <div className="text-sm text-muted-foreground">
             Check console for more details
@@ -125,30 +127,68 @@ export const GameInterface: React.FC = () => {
       <main className="max-w-6xl mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h2 className="text-xl font-semibold text-foreground mb-2">
-            Which happened first?
+            Did this happen before or after?
           </h2>
           <p className="text-muted-foreground">
-            Click on the event that occurred earlier in history
+            Compare the right event to the left event
           </p>
         </div>
 
         {/* Game Cards */}
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <GameCard
-            event={currentPair[0]}
-            onClick={() => selectEvent(currentPair[0])}
-            isSelected={selectedEvent?.id === currentPair[0].id}
-            isRevealed={isRevealed}
-            isCorrect={isRevealed ? selectedEvent?.id === currentPair[0].id ? isCorrect : !isCorrect : undefined}
-          />
+          {/* Left Event (Reference) */}
+          <div className="space-y-4">
+            <div className="text-center">
+              <span className="text-sm font-medium text-muted-foreground">Reference Event</span>
+            </div>
+            <GameCard
+              event={leftEvent}
+              onClick={() => {}}
+              isSelected={false}
+              isRevealed={true}
+              isCorrect={undefined}
+              className="opacity-90"
+            />
+          </div>
           
-          <GameCard
-            event={currentPair[1]}
-            onClick={() => selectEvent(currentPair[1])}
-            isSelected={selectedEvent?.id === currentPair[1].id}
-            isRevealed={isRevealed}
-            isCorrect={isRevealed ? selectedEvent?.id === currentPair[1].id ? isCorrect : !isCorrect : undefined}
-          />
+          {/* Right Event (To Compare) */}
+          <div className="space-y-4">
+            <div className="text-center">
+              <span className="text-sm font-medium text-muted-foreground">
+                {isRevealed ? 'Compared Event' : 'Did this happen...'}
+              </span>
+            </div>
+            <GameCard
+              event={rightEvent}
+              onClick={() => {}}
+              isSelected={false}
+              isRevealed={isRevealed}
+              isCorrect={isCorrect}
+              className={isRevealed ? '' : 'relative'}
+            />
+            
+            {/* Before/After Buttons */}
+            {!isRevealed && (
+              <div className="flex gap-4 justify-center mt-6">
+                <Button
+                  onClick={() => selectAnswer('before')}
+                  size="lg"
+                  variant="outline"
+                  className="flex-1 max-w-[140px] h-12"
+                >
+                  Before
+                </Button>
+                <Button
+                  onClick={() => selectAnswer('after')}
+                  size="lg"
+                  variant="outline" 
+                  className="flex-1 max-w-[140px] h-12"
+                >
+                  After
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Next Question Button */}
@@ -171,11 +211,12 @@ export const GameInterface: React.FC = () => {
             <div className="bg-muted/30 rounded-xl p-6 border">
               <h3 className="font-semibold text-foreground mb-3">📚 Did you know?</h3>
               <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-                {currentPair.map(event => (
-                  <div key={event.id}>
-                    <strong className="text-foreground">{event.title} ({event.year}):</strong> {event.context}
-                  </div>
-                ))}
+                <div>
+                  <strong className="text-foreground">{leftEvent.title} ({leftEvent.year}):</strong> {leftEvent.context}
+                </div>
+                <div>
+                  <strong className="text-foreground">{rightEvent.title} ({rightEvent.year}):</strong> {rightEvent.context}
+                </div>
               </div>
             </div>
           </div>

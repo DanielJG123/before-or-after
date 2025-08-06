@@ -2,19 +2,20 @@ import { useState, useCallback } from 'react';
 import { HistoricalEvent, getRandomEventPair, checkAnswer } from '@/data/historicalEvents';
 
 interface GameState {
-  currentPair: [HistoricalEvent, HistoricalEvent] | null;
+  leftEvent: HistoricalEvent | null;
+  rightEvent: HistoricalEvent | null;
   score: number;
   streak: number;
   questionsAnswered: number;
   isRevealed: boolean;
-  selectedEvent: HistoricalEvent | null;
+  selectedAnswer: 'before' | 'after' | null;
   isCorrect: boolean | null;
   usedEventIds: string[];
 }
 
 interface GameActions {
   startNewGame: () => void;
-  selectEvent: (event: HistoricalEvent) => void;
+  selectAnswer: (answer: 'before' | 'after') => void;
   nextQuestion: () => void;
   resetGame: () => void;
 }
@@ -30,24 +31,26 @@ export const useGameState = (): GameState & GameActions => {
       const initialPair = getRandomEventPair();
       console.log('Got initial pair:', initialPair);
       return {
-        currentPair: initialPair,
+        leftEvent: initialPair[0],
+        rightEvent: initialPair[1],
         score: 0,
         streak: 0,
         questionsAnswered: 0,
         isRevealed: false,
-        selectedEvent: null,
+        selectedAnswer: null,
         isCorrect: null,
         usedEventIds: [initialPair[0].id, initialPair[1].id]
       };
     } catch (error) {
       console.error('Error initializing game state:', error);
       return {
-        currentPair: null,
+        leftEvent: null,
+        rightEvent: null,
         score: 0,
         streak: 0,
         questionsAnswered: 0,
         isRevealed: false,
-        selectedEvent: null,
+        selectedAnswer: null,
         isCorrect: null,
         usedEventIds: []
       };
@@ -57,35 +60,36 @@ export const useGameState = (): GameState & GameActions => {
   const startNewGame = useCallback(() => {
     const newPair = getRandomEventPair();
     setGameState({
-      currentPair: newPair,
+      leftEvent: newPair[0],
+      rightEvent: newPair[1],
       score: 0,
       streak: 0,
       questionsAnswered: 0,
       isRevealed: false,
-      selectedEvent: null,
+      selectedAnswer: null,
       isCorrect: null,
       usedEventIds: [newPair[0].id, newPair[1].id]
     });
   }, []);
 
-  const selectEvent = useCallback((event: HistoricalEvent) => {
-    if (gameState.isRevealed || !gameState.currentPair) return;
+  const selectAnswer = useCallback((answer: 'before' | 'after') => {
+    if (gameState.isRevealed || !gameState.leftEvent || !gameState.rightEvent) return;
 
-    const otherEvent = gameState.currentPair.find(e => e.id !== event.id);
-    if (!otherEvent) return;
-
-    const isCorrect = checkAnswer(event, otherEvent);
+    // Check if right event happened before or after left event
+    const isCorrect = answer === 'before' 
+      ? gameState.rightEvent.year < gameState.leftEvent.year
+      : gameState.rightEvent.year > gameState.leftEvent.year;
     
     setGameState(prev => ({
       ...prev,
-      selectedEvent: event,
+      selectedAnswer: answer,
       isCorrect,
       isRevealed: true,
       score: isCorrect ? prev.score + 1 : prev.score,
       streak: isCorrect ? prev.streak + 1 : 0,
       questionsAnswered: prev.questionsAnswered + 1
     }));
-  }, [gameState.currentPair, gameState.isRevealed]);
+  }, [gameState.leftEvent, gameState.rightEvent, gameState.isRevealed]);
 
   const nextQuestion = useCallback(() => {
     if (gameState.questionsAnswered >= TOTAL_QUESTIONS) {
@@ -93,17 +97,19 @@ export const useGameState = (): GameState & GameActions => {
       return;
     }
 
-    const newPair = getRandomEventPair(gameState.usedEventIds);
+    // Move right event to left, get new right event
+    const newEvent = getRandomEventPair([...gameState.usedEventIds, gameState.rightEvent!.id])[0];
     
     setGameState(prev => ({
       ...prev,
-      currentPair: newPair,
+      leftEvent: prev.rightEvent,
+      rightEvent: newEvent,
       isRevealed: false,
-      selectedEvent: null,
+      selectedAnswer: null,
       isCorrect: null,
-      usedEventIds: [...prev.usedEventIds, newPair[0].id, newPair[1].id]
+      usedEventIds: [...prev.usedEventIds, newEvent.id]
     }));
-  }, [gameState.questionsAnswered, gameState.usedEventIds]);
+  }, [gameState.questionsAnswered, gameState.usedEventIds, gameState.rightEvent]);
 
   const resetGame = useCallback(() => {
     startNewGame();
@@ -112,7 +118,7 @@ export const useGameState = (): GameState & GameActions => {
   return {
     ...gameState,
     startNewGame,
-    selectEvent,
+    selectAnswer,
     nextQuestion,
     resetGame
   };
