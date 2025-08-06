@@ -82,15 +82,22 @@ export const historicalEvents: HistoricalEvent[] = [
 
 // Utility function to get random event pairs
 export const getRandomEventPair = (excludeIds: string[] = []): [HistoricalEvent, HistoricalEvent] => {
+  console.log('getRandomEventPair called with excludeIds:', excludeIds);
+  console.log('Available events:', historicalEvents.length);
+  
   const availableEvents = historicalEvents.filter(event => !excludeIds.includes(event.id));
+  console.log('Available events after filter:', availableEvents.length);
   
   if (availableEvents.length < 2) {
+    console.log('Not enough events, resetting...');
     // Reset if we've used all events
     return getRandomEventPair([]);
   }
   
   const shuffled = [...availableEvents].sort(() => Math.random() - 0.5);
-  return [shuffled[0], shuffled[1]];
+  const result: [HistoricalEvent, HistoricalEvent] = [shuffled[0], shuffled[1]];
+  console.log('Returning pair:', result);
+  return result;
 };
 
 // Check which event came first

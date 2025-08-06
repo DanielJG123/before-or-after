@@ -22,18 +22,36 @@ interface GameActions {
 const TOTAL_QUESTIONS = 10;
 
 export const useGameState = (): GameState & GameActions => {
+  console.log('useGameState hook initializing...');
+  
   const [gameState, setGameState] = useState<GameState>(() => {
-    const initialPair = getRandomEventPair();
-    return {
-      currentPair: initialPair,
-      score: 0,
-      streak: 0,
-      questionsAnswered: 0,
-      isRevealed: false,
-      selectedEvent: null,
-      isCorrect: null,
-      usedEventIds: [initialPair[0].id, initialPair[1].id]
-    };
+    console.log('Initializing game state...');
+    try {
+      const initialPair = getRandomEventPair();
+      console.log('Got initial pair:', initialPair);
+      return {
+        currentPair: initialPair,
+        score: 0,
+        streak: 0,
+        questionsAnswered: 0,
+        isRevealed: false,
+        selectedEvent: null,
+        isCorrect: null,
+        usedEventIds: [initialPair[0].id, initialPair[1].id]
+      };
+    } catch (error) {
+      console.error('Error initializing game state:', error);
+      return {
+        currentPair: null,
+        score: 0,
+        streak: 0,
+        questionsAnswered: 0,
+        isRevealed: false,
+        selectedEvent: null,
+        isCorrect: null,
+        usedEventIds: []
+      };
+    }
   });
 
   const startNewGame = useCallback(() => {

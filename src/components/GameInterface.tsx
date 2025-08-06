@@ -8,6 +8,11 @@ import { useGameState, GAME_TOTAL_QUESTIONS } from '@/hooks/useGameState';
 import { toast } from '@/hooks/use-toast';
 
 export const GameInterface: React.FC = () => {
+  console.log('GameInterface rendering...');
+  
+  const gameState = useGameState();
+  console.log('Game state:', gameState);
+  
   const {
     currentPair,
     score,
@@ -19,34 +24,27 @@ export const GameInterface: React.FC = () => {
     selectEvent,
     nextQuestion,
     resetGame
-  } = useGameState();
+  } = gameState;
 
   const [scoreAnimating, setScoreAnimating] = useState(false);
   const isGameComplete = questionsAnswered >= GAME_TOTAL_QUESTIONS;
 
-  // Trigger score animation when points are gained
-  useEffect(() => {
-    if (isCorrect === true) {
-      setScoreAnimating(true);
-      toast({
-        title: "Correct! 🎉",
-        description: `${streak > 1 ? `${streak} in a row!` : 'Well done!'}`
-      });
-      
-      const timer = setTimeout(() => setScoreAnimating(false), 600);
-      return () => clearTimeout(timer);
-    } else if (isCorrect === false) {
-      toast({
-        title: "Not quite! 🤔",
-        description: "Keep trying - you'll get the next one!"
-      });
-    }
-  }, [isCorrect, streak]);
+  console.log('Current pair:', currentPair);
+  console.log('Is game complete:', isGameComplete);
 
+  // Show debug info if no current pair
   if (!currentPair) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-muted-foreground">Loading game...</div>
+      <div className="min-h-screen flex items-center justify-center bg-background p-4">
+        <div className="text-center space-y-4">
+          <div className="text-2xl font-bold text-foreground">Loading Game...</div>
+          <div className="text-muted-foreground">
+            Debug: currentPair is {currentPair ? 'available' : 'null'}
+          </div>
+          <div className="text-sm text-muted-foreground">
+            Check console for more details
+          </div>
+        </div>
       </div>
     );
   }
