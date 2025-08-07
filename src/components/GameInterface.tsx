@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, RotateCcw, Trophy } from 'lucide-react';
+import { RotateCcw, Trophy, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { GameCard } from './GameCard';
 import { ScoreDisplay } from './ScoreDisplay';
 import { ProgressIndicator } from './ProgressIndicator';
@@ -28,7 +29,21 @@ export const GameInterface: React.FC = () => {
   } = gameState;
 
   const [scoreAnimating, setScoreAnimating] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
   const isGameComplete = questionsAnswered >= GAME_TOTAL_QUESTIONS;
+
+  // Auto-transition after correct answer
+  useEffect(() => {
+    if (isRevealed && !isGameComplete && isCorrect) {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => {
+        nextQuestion();
+        setIsTransitioning(false);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [isRevealed, isGameComplete, isCorrect, nextQuestion]);
 
   console.log('Left event:', leftEvent);
   console.log('Right event:', rightEvent);
@@ -90,10 +105,10 @@ export const GameInterface: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="h-screen bg-background flex flex-col overflow-hidden">
       {/* Header */}
-      <header className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+      <header className="bg-background border-b border-border">
+        <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold text-foreground">Before or After?</h1>
             <Button
@@ -124,103 +139,83 @@ export const GameInterface: React.FC = () => {
       </header>
 
       {/* Main Game Area */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h2 className="text-xl font-semibold text-foreground mb-2">
-            Did this happen before or after?
-          </h2>
-          <p className="text-muted-foreground">
-            Compare the right event to the left event
-          </p>
-        </div>
+      <main className="flex-1 flex items-center justify-center px-4">
+        <div className="max-w-5xl w-full">
 
-        {/* Game Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Left Event (Reference) */}
-          <div className="space-y-4">
-            <div className="text-center">
-              <span className="text-sm font-medium text-muted-foreground">Reference Event</span>
+          {/* Game Cards */}
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Left Event (Reference) */}
+            <div className="space-y-4">
+              <GameCard
+                event={leftEvent}
+                onClick={() => {}}
+                isSelected={false}
+                isRevealed={true}
+                isCorrect={undefined}
+                className={`transition-all duration-500 ${isTransitioning ? 'animate-slide-out-left opacity-0' : 'animate-slide-in-left'}`}
+              />
             </div>
-            <GameCard
-              event={leftEvent}
-              onClick={() => {}}
-              isSelected={false}
-              isRevealed={true}
-              isCorrect={undefined}
-              className="opacity-90"
-            />
-          </div>
-          
-          {/* Right Event (To Compare) */}
-          <div className="space-y-4">
-            <div className="text-center">
-              <span className="text-sm font-medium text-muted-foreground">
-                {isRevealed ? 'Compared Event' : 'Did this happen...'}
-              </span>
-            </div>
-            <GameCard
-              event={rightEvent}
-              onClick={() => {}}
-              isSelected={false}
-              isRevealed={isRevealed}
-              isCorrect={isCorrect}
-              className={isRevealed ? '' : 'relative'}
-            />
             
-            {/* Before/After Buttons */}
-            {!isRevealed && (
-              <div className="flex gap-4 justify-center mt-6">
-                <Button
-                  onClick={() => selectAnswer('before')}
-                  size="lg"
-                  variant="outline"
-                  className="flex-1 max-w-[140px] h-12"
-                >
-                  Before
-                </Button>
-                <Button
-                  onClick={() => selectAnswer('after')}
-                  size="lg"
-                  variant="outline" 
-                  className="flex-1 max-w-[140px] h-12"
-                >
-                  After
-                </Button>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Next Question Button */}
-        {isRevealed && !isGameComplete && (
-          <div className="text-center mt-8">
-            <Button
-              onClick={nextQuestion}
-              size="lg"
-              className="gap-2"
-            >
-              Next Question
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        {/* Educational Footer */}
-        {isRevealed && (
-          <div className="mt-12 max-w-2xl mx-auto">
-            <div className="bg-muted/30 rounded-xl p-6 border">
-              <h3 className="font-semibold text-foreground mb-3">📚 Did you know?</h3>
-              <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-                <div>
-                  <strong className="text-foreground">{leftEvent.title} ({leftEvent.year}):</strong> {leftEvent.context}
+            {/* Right Event (To Compare) */}
+            <div className="space-y-6">
+              <GameCard
+                event={rightEvent}
+                onClick={() => {}}
+                isSelected={false}
+                isRevealed={isRevealed}
+                isCorrect={isCorrect}
+                className={`transition-all duration-500 ${isTransitioning ? 'animate-slide-to-left' : 'animate-slide-in-right'}`}
+              />
+              
+              {/* Before/After Buttons */}
+              {!isRevealed && (
+                <div className="flex gap-6 justify-center">
+                  <Button
+                    onClick={() => selectAnswer('before')}
+                    size="lg"
+                    className="flex-1 max-w-[160px] h-14 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg shadow-lg"
+                  >
+                    Before
+                  </Button>
+                  <Button
+                    onClick={() => selectAnswer('after')}
+                    size="lg"
+                    className="flex-1 max-w-[160px] h-14 bg-green-600 hover:bg-green-700 text-white font-semibold text-lg shadow-lg"
+                  >
+                    After
+                  </Button>
                 </div>
-                <div>
-                  <strong className="text-foreground">{rightEvent.title} ({rightEvent.year}):</strong> {rightEvent.context}
+              )}
+              
+              {/* More Info Button */}
+              {isRevealed && !isCorrect && (
+                <div className="flex justify-center">
+                  <Collapsible open={showMoreInfo} onOpenChange={setShowMoreInfo}>
+                    <CollapsibleTrigger asChild>
+                      <Button variant="ghost" size="sm" className="gap-2">
+                        <Info className="h-4 w-4" />
+                        {showMoreInfo ? 'Hide Info' : 'More Info'}
+                      </Button>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4">
+                      <div className="bg-muted/30 rounded-xl p-4 border text-sm space-y-2">
+                        <div>
+                          <strong className="text-foreground">{leftEvent.title} ({leftEvent.year}):</strong>
+                          <p className="text-muted-foreground mt-1">{leftEvent.context}</p>
+                        </div>
+                        <div>
+                          <strong className="text-foreground">{rightEvent.title} ({rightEvent.year}):</strong>
+                          <p className="text-muted-foreground mt-1">{rightEvent.context}</p>
+                        </div>
+                      </div>
+                    </CollapsibleContent>
+                  </Collapsible>
                 </div>
-              </div>
+              )}
             </div>
           </div>
-        )}
+
+        </div>
       </main>
     </div>
   );
