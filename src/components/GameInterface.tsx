@@ -236,18 +236,20 @@ export const GameInterface: React.FC = () => {
             
             {/* Right Event (To Compare) */}
             <div className="space-y-6">
-              <GameCard
-                event={rightEvent}
-                onClick={() => {}}
-                isSelected={false}
-                isRevealed={isRevealed}
-                isCorrect={isCorrect}
-                className={`transition-all duration-600 ease-in-out ${
-                  isTransitioning 
-                    ? 'opacity-0 transform -translate-x-4' 
-                    : 'opacity-100 transform translate-x-0'
-                }`}
-              />
+              <div className={!isRevealed ? 'blur-sm' : ''}>
+                <GameCard
+                  event={rightEvent}
+                  onClick={() => {}}
+                  isSelected={false}
+                  isRevealed={isRevealed}
+                  isCorrect={isCorrect}
+                  className={`transition-all duration-600 ease-in-out ${
+                    isTransitioning 
+                      ? 'opacity-0 transform -translate-x-4' 
+                      : 'opacity-100 transform translate-x-0'
+                  }`}
+                />
+              </div>
               
               {/* Before/After Buttons or Revealed Date */}
               <div className="space-y-4">
