@@ -1,0 +1,48 @@
+You are an expert historian and data formatter. Generate a JSON array of historical events based on the following constraints:
+
+- Time period: Post-classical history
+- Geographic focus: Global
+
+Each event should be a major historical event with a clearly defined start year. Format each entry in the following JSON structure:
+
+```json
+{
+  id: "printing-press",
+  title: "Gutenberg Invents the Printing Press",
+  year: 1440,
+  description: "Johannes Gutenberg revolutionized communication by inventing movable type printing, making books accessible to the masses.",
+  context: "This invention sparked the Renaissance and Reformation by making knowledge widely available.",
+  image: "image-suggestion-or-keyword"
+}
+
+---
+
+## 🧩 Swap-out Keywords
+
+You can change these parts in the prompt to generate different sets:
+
+| Keyword | Example Inputs |
+|--------|----------------|
+| `[INSERT_TIME_PERIOD]` | "Ancient World (before 500 AD)", "Middle Ages", "19th Century", "Post-WWII", "Prehistoric to Present" |
+| `[INSERT_REGION]` | "Europe", "East Asia", "Global", "Africa", "The Americas", "Middle East", "India" |
+| `[INSERT_THEME]` | "Science & Invention", "Wars and Conflicts", "Political Revolutions", "Religious History", "Any theme" |
+
+---
+
+## ✅ Example Usage
+
+Here’s an example filled in:
+
+> Time period: **Middle Ages**  
+> Geographic focus: **Europe**  
+> Theme: **Any theme**  
+
+Paste it in, and you’ll get 10 solid entries like:
+- Fall of Constantinople
+- Signing of the Magna Carta
+- Black Death outbreak
+- etc.
+
+---
+
+Would you like me to run the **first batch right now** using a default prompt, or would you rather paste the prompt in a new chat to experiment on your own?

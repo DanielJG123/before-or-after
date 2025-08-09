@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { HistoricalEvent, getRandomEventPair, checkAnswer } from '@/data/historicalEvents';
+import { useState, useCallback, useEffect } from 'react';
+import { HistoricalEvent, getRandomEventPair, checkAnswer, getHistoricalEvents } from '@/data/historicalEvents';
 
 interface GameState {
   leftEvent: HistoricalEvent | null;
@@ -11,6 +11,7 @@ interface GameState {
   selectedAnswer: 'before' | 'after' | null;
   isCorrect: boolean | null;
   usedEventIds: string[];
+  isLoading: boolean;
 }
 
 interface GameActions {
@@ -25,51 +26,73 @@ const TOTAL_QUESTIONS = 10;
 export const useGameState = (): GameState & GameActions => {
   console.log('useGameState hook initializing...');
   
-  const [gameState, setGameState] = useState<GameState>(() => {
-    console.log('Initializing game state...');
-    try {
-      const initialPair = getRandomEventPair();
-      console.log('Got initial pair:', initialPair);
-      return {
-        leftEvent: initialPair[0],
-        rightEvent: initialPair[1],
-        score: 0,
-        streak: 0,
-        questionsAnswered: 0,
-        isRevealed: false,
-        selectedAnswer: null,
-        isCorrect: null,
-        usedEventIds: [initialPair[0].id, initialPair[1].id]
-      };
-    } catch (error) {
-      console.error('Error initializing game state:', error);
-      return {
-        leftEvent: null,
-        rightEvent: null,
-        score: 0,
-        streak: 0,
-        questionsAnswered: 0,
-        isRevealed: false,
-        selectedAnswer: null,
-        isCorrect: null,
-        usedEventIds: []
-      };
-    }
-  });
+  const [gameState, setGameState] = useState<GameState>(() => ({
+    leftEvent: null,
+    rightEvent: null,
+    score: 0,
+    streak: 0,
+    questionsAnswered: 0,
+    isRevealed: false,
+    selectedAnswer: null,
+    isCorrect: null,
+    usedEventIds: [],
+    isLoading: true
+  }));
+
+  // Initialize the game with first pair
+  useEffect(() => {
+    const initializeGame = async () => {
+      try {
+        console.log('Initializing game state...');
+        // Wait for events to be loaded
+        await getHistoricalEvents();
+        
+        // Now getRandomEventPair is synchronous
+        const initialPair = getRandomEventPair();
+        console.log('Got initial pair:', initialPair);
+        
+        setGameState(prev => ({
+          ...prev,
+          leftEvent: initialPair[0],
+          rightEvent: initialPair[1],
+          usedEventIds: [initialPair[0].id, initialPair[1].id],
+          isLoading: false
+        }));
+      } catch (error) {
+        console.error('Error initializing game state:', error);
+        setGameState(prev => ({
+          ...prev,
+          isLoading: false
+        }));
+      }
+    };
+
+    initializeGame();
+  }, []);
 
   const startNewGame = useCallback(() => {
-    const newPair = getRandomEventPair();
-    setGameState({
-      leftEvent: newPair[0],
-      rightEvent: newPair[1],
-      score: 0,
-      streak: 0,
-      questionsAnswered: 0,
-      isRevealed: false,
-      selectedAnswer: null,
-      isCorrect: null,
-      usedEventIds: [newPair[0].id, newPair[1].id]
-    });
+    try {
+      setGameState(prev => ({ ...prev, isLoading: true }));
+      
+      // getRandomEventPair is now synchronous
+      const newPair = getRandomEventPair();
+      
+      setGameState({
+        leftEvent: newPair[0],
+        rightEvent: newPair[1],
+        score: 0,
+        streak: 0,
+        questionsAnswered: 0,
+        isRevealed: false,
+        selectedAnswer: null,
+        isCorrect: null,
+        usedEventIds: [newPair[0].id, newPair[1].id],
+        isLoading: false
+      });
+    } catch (error) {
+      console.error('Error starting new game:', error);
+      setGameState(prev => ({ ...prev, isLoading: false }));
+    }
   }, []);
 
   const selectAnswer = useCallback((answer: 'before' | 'after') => {
@@ -97,18 +120,27 @@ export const useGameState = (): GameState & GameActions => {
       return;
     }
 
-    // Move right event to left, get new right event
-    const newEvent = getRandomEventPair([...gameState.usedEventIds, gameState.rightEvent!.id])[0];
-    
-    setGameState(prev => ({
-      ...prev,
-      leftEvent: prev.rightEvent,
-      rightEvent: newEvent,
-      isRevealed: false,
-      selectedAnswer: null,
-      isCorrect: null,
-      usedEventIds: [...prev.usedEventIds, newEvent.id]
-    }));
+    try {
+      setGameState(prev => ({ ...prev, isLoading: true }));
+      
+      // getRandomEventPair is now synchronous
+      const newPair = getRandomEventPair([...gameState.usedEventIds, gameState.rightEvent!.id]);
+      const newEvent = newPair[0];
+      
+      setGameState(prev => ({
+        ...prev,
+        leftEvent: prev.rightEvent,
+        rightEvent: newEvent,
+        isRevealed: false,
+        selectedAnswer: null,
+        isCorrect: null,
+        usedEventIds: [...prev.usedEventIds, newEvent.id],
+        isLoading: false
+      }));
+    } catch (error) {
+      console.error('Error getting next question:', error);
+      setGameState(prev => ({ ...prev, isLoading: false }));
+    }
   }, [gameState.questionsAnswered, gameState.usedEventIds, gameState.rightEvent]);
 
   const resetGame = useCallback(() => {

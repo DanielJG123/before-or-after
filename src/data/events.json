@@ -1,0 +1,992 @@
+[{
+    "id": "printing-press",
+    "title": "Gutenberg Invents the Printing Press",
+    "year": 1440,
+    "description": "Johannes Gutenberg revolutionized communication by inventing movable type printing, making books accessible to the masses.",
+    "image": "printingPress",
+    "context": "This invention sparked the Renaissance and Reformation by making knowledge widely available."
+  },
+  {
+    "id": "moon-landing",
+    "title": "First Moon Landing",
+    "year": 1969,
+    "description": "Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon during the Apollo 11 mission.",
+    "image": "moonLanding",
+    "context": "This achievement fulfilled President Kennedy's goal of landing on the Moon before the end of the 1960s."
+  },
+  {
+    "id": "berlin-wall",
+    "title": "Construction of the Berlin Wall",
+    "year": 1961,
+    "description": "East Germany built a wall separating East and West Berlin, becoming a symbol of the Cold War division.",
+    "image": "berlinWall",
+    "context": "The wall stood for 28 years until it was torn down in 1989, marking the end of the Cold War era."
+  },
+  {
+    "id": "wright-flight",
+    "title": "Wright Brothers First Flight",
+    "year": 1903,
+    "description": "Orville and Wilbur Wright achieved the first powered, sustained, and controlled airplane flight at Kitty Hawk.",
+    "image": "wrightBrothers",
+    "context": "This 12-second flight launched the age of aviation and changed transportation forever."
+  },
+  {
+    "id": "internet",
+    "title": "Birth of the World Wide Web",
+    "year": 1991,
+    "description": "Tim Berners-Lee created the first website and web browser, launching the public Internet.",
+    "image": "internet",
+    "context": "This invention transformed global communication and commerce in ways still unfolding today."
+  },
+  {
+    "id": "television",
+    "title": "First Television Broadcast",
+    "year": 1936,
+    "description": "The BBC began the world's first regular television service, broadcasting to London and surrounding areas.",
+    "image": "television",
+    "context": "Television would go on to become the dominant form of entertainment and news distribution."
+  },
+  {
+    "id": "penicillin",
+    "title": "Discovery of Penicillin",
+    "year": 1928,
+    "description": "Alexander Fleming discovered penicillin, the first true antibiotic, revolutionizing medicine.",
+    "image": "penicillin",
+    "context": "This discovery has saved millions of lives and launched the age of antibiotics."
+  },
+  {
+    "id": "dna-structure",
+    "title": "DNA Structure Discovered",
+    "year": 1953,
+    "description": "Watson, Crick, Franklin, and Wilkins discovered the double helix structure of DNA.",
+    "image": "dna-structure",
+    "context": "This breakthrough laid the foundation for modern genetics and biotechnology."
+  },
+  {
+    "id": "first-cities-mesopotamia",
+    "title": "First Cities Emerge in Mesopotamia",
+    "year": -3500,
+    "description": "Urban centers such as Uruk and Ur emerged in Mesopotamia, marking the beginning of organized city life and complex societies.",
+    "context": "These cities became hubs for trade, administration, and culture, laying the foundation for future civilizations.",
+    "image": "ancient-mesopotamian-city"
+  },
+  {
+    "id": "unification-egypt",
+    "title": "Unification of Upper and Lower Egypt",
+    "year": -3100,
+    "description": "King Narmer (also known as Menes) unified Upper and Lower Egypt, establishing the First Dynasty.",
+    "context": "This political unification initiated the Pharaonic era, characterized by monumental architecture and centralized rule.",
+    "image": "narmer-palette"
+  },
+  {
+    "id": "code-of-hammurabi",
+    "title": "Code of Hammurabi Issued",
+    "year": -1754,
+    "description": "King Hammurabi of Babylon promulgated one of the earliest and most complete written legal codes.",
+    "context": "The code provided laws covering trade, property, family, and crime, influencing future legal systems.",
+    "image": "hammurabi-stele"
+  },
+  {
+    "id": "olympic-games-begin",
+    "title": "First Ancient Olympic Games",
+    "year": -776,
+    "description": "The first recorded Olympic Games were held in Olympia, Greece, as a festival honoring Zeus.",
+    "context": "The games became a unifying cultural event for the Greek world, emphasizing athletic prowess and shared heritage.",
+    "image": "ancient-olympics"
+  },
+    {
+    "id": "alexander-conquers-persia",
+    "title": "Alexander the Great Conquers the Persian Empire",
+    "year": -331,
+    "description": "Alexander defeated Darius III at the Battle of Gaugamela, leading to the fall of the Persian Empire.",
+    "context": "His conquests spread Greek culture across a vast territory, initiating the Hellenistic era.",
+    "image": "battle-of-gaugamela"
+  },
+    {
+    "id": "qin-unification-china",
+    "title": "Qin Dynasty Unifies China",
+    "year": -221,
+    "description": "Qin Shi Huang unified China under a centralized imperial system and began construction of the Great Wall.",
+    "context": "This unification standardized currency, writing, and measurements, shaping the structure of Chinese governance for centuries.",
+    "image": "qin-dynasty-emperor"
+  },
+    {
+    "id": "roman-empire-founded",
+    "title": "Founding of the Roman Empire",
+    "year": -27,
+    "description": "Octavian, later known as Augustus, became the first Roman Emperor, marking the transition from Republic to Empire.",
+    "context": "The empire ushered in centuries of relative peace and prosperity known as the Pax Romana.",
+    "image": "augustus-statue"
+  },
+  {
+    "id": "maori-arrival-new-zealand",
+    "title": "Early Polynesian Settlement of New Zealand",
+    "year": -800,
+    "description": "Polynesian navigators, skilled in oceanic voyaging, settled in Aotearoa (New Zealand).",
+    "context": "These settlements marked the spread of Polynesian culture across the vast Pacific Ocean.",
+    "image": "polynesian-canoe"
+  },
+  {
+    "id": "fall-of-rome",
+    "title": "Fall of the Western Roman Empire",
+    "year": 476,
+    "description": "The deposition of Emperor Romulus Augustulus marked the traditional end of the Western Roman Empire.",
+    "context": "This event symbolized the transition from classical antiquity to the Middle Ages in Europe.",
+    "image": "fall-of-rome"
+  },
+  {
+    "id": "fall-of-constantinople",
+    "title": "Fall of Constantinople",
+    "year": 1453,
+    "description": "The Ottoman Empire captured Constantinople, marking the end of the Byzantine Empire.",
+    "context": "This event shifted the balance of power in the region, led to the spread of Islam, and caused Europeans to seek new trade routes.",
+    "image": "fall-of-constantinople"
+  },
+  {
+    "id": "columbus-discovery-america",
+    "title": "Columbus Discovers the Americas",
+    "year": 1492,
+    "description": "Christopher Columbus's arrival in the New World opened up the Americas to European exploration and colonization.",
+    "context": "This event initiated centuries of colonialism and the exchange of goods, ideas, and cultures between the Old and New Worlds.",
+    "image": "columbus-arrival"
+  },
+  {
+    "id": "martin-luther-reformation",
+    "title": "Martin Luther's 95 Theses",
+    "year": 1517,
+    "description": "Martin Luther nailed his 95 Theses to the church door, challenging the Catholic Church's practices, sparking the Protestant Reformation.",
+    "context": "The Reformation led to the fragmentation of Christianity and significant political and social upheaval across Europe.",
+    "image": "martin-luther-95-theses"
+  },
+  {
+    "id": "spanish-conquest-aztecs",
+    "title": "Spanish Conquest of the Aztec Empire",
+    "year": 1521,
+    "description": "Hernán Cortés led an expedition that resulted in the fall of the Aztec Empire, marking the beginning of Spanish dominance in the Americas.",
+    "context": "This event drastically altered the indigenous cultures of the Americas and initiated the age of European colonization in the Western Hemisphere.",
+    "image": "aztec-conquest"
+  },
+  {
+    "id": "battle-of-lepanto",
+    "title": "Battle of Lepanto",
+    "year": 1571,
+    "description": "A major naval battle where the Holy League, led by Spain, defeated the Ottoman Empire's fleet.",
+    "context": "This victory halted the Ottoman Empire's expansion into Europe and marked the beginning of European naval dominance in the Mediterranean.",
+    "image": "battle-of-lepanto"
+  },
+  {
+    "id": "english-civil-war",
+    "title": "English Civil War",
+    "year": 1642,
+    "description": "A series of armed conflicts between Parliamentarians and Royalists over governance, religion, and royal authority.",
+    "context": "This war resulted in the temporary overthrow of the monarchy and the establishment of the Commonwealth of England.",
+    "image": "english-civil-war"
+  },
+  {
+    "id": "age-of-enlightenment",
+    "title": "Age of Enlightenment",
+    "year": 1715,
+    "description": "A cultural movement emphasizing reason, individualism, and skepticism of authority, which influenced politics, science, and philosophy.",
+    "context": "The Enlightenment laid the intellectual foundations for modern democracy and the French Revolution.",
+    "image": "age-of-enlightenment"
+  },
+  {
+    "id": "american-revolution",
+    "title": "American Revolution",
+    "year": 1775,
+    "description": "The Thirteen American Colonies fought for independence from Britain, leading to the creation of the United States of America.",
+    "context": "This revolution influenced democratic movements around the world and set a precedent for the overthrow of colonial powers.",
+    "image": "american-revolution"
+  },
+  {
+    "id": "french-revolution",
+    "title": "French Revolution",
+    "year": 1789,
+    "description": "The French Revolution overthrew the monarchy, established a republic, and radically changed the political landscape of France.",
+    "context": "It inspired revolutions across Europe and Latin America, promoting ideas of liberty, equality, and fraternity.",
+    "image": "french-revolution"
+  },
+  {
+    "id": "napoleon-bonaparte",
+    "title": "Napoleon Bonaparte's Rise to Power",
+    "year": 1799,
+    "description": "Napoleon Bonaparte rose to prominence during the French Revolution and later became Emperor of France, leading numerous military campaigns.",
+    "context": "His conquests reshaped Europe, spreading revolutionary ideals, and his downfall led to the Congress of Vienna.",
+    "image": "napoleon-bonaparte"
+  },
+  {
+    "id": "industrial-revolution",
+    "title": "The Industrial Revolution",
+    "year": 1760,
+    "description": "A period of technological advancements that transformed economies from agrarian to industrial, beginning in Britain and spreading globally.",
+    "context": "It marked the shift to industrial capitalism and urbanization, profoundly impacting society, economy, and the environment.",
+    "image": "industrial-revolution"
+  },
+  {
+    "id": "emancipation-proclamation",
+    "title": "Emancipation Proclamation",
+    "year": 1863,
+    "description": "Issued by Abraham Lincoln, it declared the freedom of slaves in Confederate-held territories during the American Civil War.",
+    "context": "This act significantly altered the course of the war and contributed to the abolition of slavery in the United States.",
+    "image": "emancipation-proclamation"
+  },
+  {
+    "id": "meiji-restoration",
+    "title": "Meiji Restoration",
+    "year": 1868,
+    "description": "The restoration of imperial rule in Japan under Emperor Meiji, leading to modernization and the end of the feudal system.",
+    "context": "This transformation made Japan a major global power by the early 20th century.",
+    "image": "meiji-restoration"
+  },
+  {
+    "id": "world-war-i",
+    "title": "World War I",
+    "year": 1914,
+    "description": "A global war centered in Europe, involving many of the world's great powers and leading to massive casualties and political upheaval.",
+    "context": "World War I reshaped the political map of Europe, led to the downfall of empires, and set the stage for World War II.",
+    "image": "world-war-i"
+  },
+  {
+    "id": "russian-revolution",
+    "title": "Russian Revolution",
+    "year": 1917,
+    "description": "A series of revolutions that dismantled the Tsarist autocracy and led to the establishment of the Soviet Union.",
+    "context": "The revolution was a key moment in the rise of communism and had global ramifications throughout the 20th century.",
+    "image": "russian-revolution"
+  },
+  {
+    "id": "world-war-ii",
+    "title": "World War II",
+    "year": 1939,
+    "description": "A global conflict that involved most of the world's nations and led to unprecedented destruction, including the Holocaust and atomic bombings.",
+    "context": "World War II led to the division of Europe, the rise of the United States and the Soviet Union as superpowers, and the establishment of the United Nations.",
+    "image": "world-war-ii"
+  },
+  {
+    "id": "indian-independence",
+    "title": "Indian Independence",
+    "year": 1947,
+    "description": "India gained independence from British rule after decades of nonviolent resistance led by figures like Mahatma Gandhi.",
+    "context": "The independence movement inspired other colonial nations to pursue self-determination and freedom from imperial powers.",
+    "image": "indian-independence"
+  },
+  {
+    "id": "cold-war",
+    "title": "Cold War Begins",
+    "year": 1947,
+    "description": "A period of geopolitical tension between the Soviet Union and the United States, leading to a global ideological and military rivalry.",
+    "context": "The Cold War influenced global politics, alliances, and conflicts for nearly half a century.",
+    "image": "cold-war"
+  },
+  {
+    "id": "civil-rights-movement",
+    "title": "Civil Rights Movement",
+    "year": 1954,
+    "description": "A social and political movement that sought to end racial segregation and discrimination against African Americans in the United States.",
+    "context": "This movement led to significant legislative changes, including the Civil Rights Act of 1964 and the Voting Rights Act of 1965.",
+    "image": "civil-rights-movement"
+  },
+  {
+    "id": "9-11-attacks",
+    "title": "September 11 Attacks",
+    "year": 2001,
+    "description": "Terrorist attacks carried out by al-Qaeda, targeting the United States with the destruction of the World Trade Center towers and the Pentagon.",
+    "context": "These attacks led to significant changes in global security policies and the beginning of the War on Terror.",
+    "image": "9-11-attacks"
+  },
+  {
+    "id": "arab-spring",
+    "title": "Arab Spring",
+    "year": 2010,
+    "description": "A series of anti-government protests across the Arab world, leading to regime changes in several countries.",
+    "context": "The Arab Spring highlighted the power of social media in mobilizing mass protests and reshaped the political landscape of the Middle East.",
+    "image": "arab-spring"
+  },
+  {
+    "id": "charlemagne-crowned-emperor",
+    "title": "Charlemagne is Crowned Emperor",
+    "year": 800,
+    "description": "Charlemagne was crowned Holy Roman Emperor by Pope Leo III, uniting much of Western Europe for the first time since the fall of the Roman Empire.",
+    "context": "This event marked the revival of the Roman Empire in the West and the rise of the Carolingian Empire, influencing the future of European politics.",
+    "image": "charlemagne-crowned"
+  },
+  {
+    "id": "viking-invasion-england",
+    "title": "Viking Invasion of England",
+    "year": 793,
+    "description": "Viking raids on the monastery of Lindisfarne mark the beginning of the Viking Age in Britain, leading to decades of raids and invasions.",
+    "context": "The Viking invasions deeply affected the British Isles, leading to the establishment of the Danelaw and influencing Anglo-Saxon culture.",
+    "image": "viking-invasion"
+  },
+  {
+    "id": "battle-of-hastings",
+    "title": "Battle of Hastings",
+    "year": 1066,
+    "description": "The Norman forces, led by William the Conqueror, defeated the Anglo-Saxon army of King Harold II at the Battle of Hastings.",
+    "context": "This battle led to the Norman Conquest of England and the establishment of Norman rule, dramatically shaping English society and governance.",
+    "image": "battle-of-hastings"
+  },
+  {
+    "id": "byzantine-empire-falls",
+    "title": "Byzantine Empire Falls",
+    "year": 1453,
+    "description": "The Ottoman Empire conquered Constantinople, bringing an end to the Byzantine Empire after over a thousand years.",
+    "context": "The fall of Constantinople was a major turning point in world history, leading to the spread of the Ottoman Empire and reshaping trade routes.",
+    "image": "fall-of-constantinople"
+  },
+  {
+    "id": "crusades-begin",
+    "title": "The First Crusade Begins",
+    "year": 1096,
+    "description": "Pope Urban II called for a military expedition to reclaim Jerusalem from Muslim rule, sparking the First Crusade.",
+    "context": "The Crusades had long-lasting effects on Christian-Muslim relations and influenced the political and cultural landscape of the Middle East and Europe.",
+    "image": "first-crusade"
+  },
+  {
+    "id": "muhammad-found-islam",
+    "title": "Prophet Muhammad Founding Islam",
+    "year": 610,
+    "description": "The Prophet Muhammad began receiving revelations, marking the foundation of the Islamic faith.",
+    "context": "Islam quickly spread across the Middle East and beyond, shaping world history, culture, and politics for centuries.",
+    "image": "prophet-muhammad"
+  },
+  {
+    "id": "foundation-of-mali-empire",
+    "title": "Foundation of the Mali Empire",
+    "year": 1235,
+    "description": "Sundiata Keita founded the Mali Empire in West Africa, which became one of the wealthiest and most powerful empires of the medieval period.",
+    "context": "The Mali Empire became a center of trade, culture, and learning, with the famous city of Timbuktu as a key intellectual hub.",
+    "image": "mali-empire"
+  },
+  {
+    "id": "black-death-arrives-europe",
+    "title": "Black Death Reaches Europe",
+    "year": 1347,
+    "description": "The Black Death, a deadly plague, spread across Europe, killing an estimated one-third of the population.",
+    "context": "The pandemic had profound social, economic, and cultural impacts, contributing to the decline of feudalism and changing the course of European history.",
+    "image": "black-death"
+  },
+  {
+    "id": "treaty-of-verdun",
+    "title": "Treaty of Verdun",
+    "year": 843,
+    "description": "The Treaty of Verdun divided the Carolingian Empire into three kingdoms, setting the stage for the formation of modern France and Germany.",
+    "context": "This division marked the beginning of the fragmentation of the Holy Roman Empire and had lasting consequences for European geopolitics.",
+    "image": "treaty-of-verdun"
+  },
+  {
+    "id": "ottoman-empire-founded",
+    "title": "Ottoman Empire Founded",
+    "year": 1299,
+    "description": "The Ottoman Empire was founded by Osman I, eventually becoming one of the most powerful empires in the world.",
+    "context": "The Ottomans expanded their influence over Southeast Europe, Western Asia, and North Africa, shaping the region for centuries.",
+    "image": "ottoman-empire"
+  },
+  {
+    "id": "reign-of-justinian",
+    "title": "Reign of Emperor Justinian I",
+    "year": 527,
+    "description": "Justinian I became Byzantine Emperor, known for his legal reforms (the Justinian Code) and the construction of the Hagia Sophia.",
+    "context": "Justinian's reign is remembered for its cultural achievements and attempts to restore the greatness of the Roman Empire.",
+    "image": "justinian-reign"
+  },
+  {
+    "id": "bubonic-plague",
+    "title": "Bubonic Plague Spreads",
+    "year": 1347,
+    "description": "The Bubonic Plague spread throughout Europe, Asia, and Africa, causing widespread death and social upheaval.",
+    "context": "This pandemic significantly altered global populations, economies, and social structures, accelerating the decline of feudalism.",
+    "image": "bubonic-plague"
+  },
+  {
+    "id": "mayan-collapse",
+    "title": "Mayan Civilization Declines",
+    "year": 900,
+    "description": "The Classic Maya civilization experienced a decline, likely due to a combination of environmental factors, warfare, and societal changes.",
+    "context": "While some Mayan cities continued to thrive, the collapse of the Classic Maya civilization marked the end of an era in Mesoamerican history.",
+    "image": "mayan-collapse"
+  },
+  {
+    "id": "chinese-sui-dynasty",
+    "title": "Sui Dynasty Unifies China",
+    "year": 589,
+    "description": "The Sui Dynasty reunified China after nearly four centuries of division, laying the foundation for the Tang Dynasty.",
+    "context": "The Sui Dynasty's unification of China restored imperial control, enabling the cultural and economic development of subsequent dynasties.",
+    "image": "sui-dynasty"
+  },
+  {
+    "id": "charles-martel-battle-of-tours",
+    "title": "Battle of Tours",
+    "year": 732,
+    "description": "Charles Martel led Frankish forces to victory against the advancing Muslim army in the Battle of Tours.",
+    "context": "The victory stopped the expansion of Islam into Western Europe and solidified the power of the Carolingian dynasty.",
+    "image": "battle-of-tours"
+  },
+  {
+    "id": "song-dynasty-inventions",
+    "title": "Song Dynasty Technological Innovations",
+    "year": 960,
+    "description": "The Song Dynasty in China saw numerous technological advancements, including the invention of gunpowder, the compass, and movable-type printing.",
+    "context": "These innovations laid the groundwork for the Renaissance and the development of global trade.",
+    "image": "song-dynasty"
+  },
+  {
+    "id": "batu-khan-mongol-invasion",
+    "title": "Mongol Invasion of Europe",
+    "year": 1241,
+    "description": "Batu Khan led the Mongol forces into Eastern Europe, devastating regions such as Hungary and Poland.",
+    "context": "The Mongol invasion dramatically reshaped the political landscape of Eastern Europe and expanded Mongol influence across Eurasia.",
+    "image": "mongol-invasion"
+  },
+  {
+    "id": "baltic-crusades",
+    "title": "The Baltic Crusades",
+    "year": 1198,
+    "description": "Papal-led campaigns to convert the pagan tribes of the Baltic region to Christianity, which led to the establishment of Christian states in the area.",
+    "context": "The Baltic Crusades marked the last major expansion of Christianity in Europe during the Middle Ages.",
+    "image": "baltic-crusades"
+  },
+  {
+    "id": "reign-of-saladin",
+    "title": "Saladin’s Reign",
+    "year": 1174,
+    "description": "Saladin became Sultan of Egypt and Syria, unifying Muslim territories and recapturing Jerusalem from the Crusaders.",
+    "context": "Saladin is remembered as a symbol of Muslim unity and resistance during the Crusades, becoming a legendary figure in Islamic and Western histories.",
+    "image": "saladin-reign"
+  },
+  {
+    "id": "norman-settlement-sicily",
+    "title": "Norman Conquest of Sicily",
+    "year": 1061,
+    "description": "The Normans, led by Roger II, conquered Sicily, establishing a powerful kingdom.",
+    "context": "This conquest marked the beginning of Norman dominance in the Mediterranean and helped shape the political and cultural landscape of the region.",
+    "image": "norman-sicily"
+  },
+  {
+    "id": "russian-revolution",
+    "title": "Russian Revolution",
+    "year": 1917,
+    "description": "A series of revolutions that dismantled the Tsarist autocracy and led to the rise of the Soviet Union.",
+    "context": "The revolution marked the end of the Romanov dynasty and the beginning of communist rule in Russia, significantly influencing global geopolitics.",
+    "image": "russian-revolution"
+  },
+  {
+    "id": "treaty-of-versailles",
+    "title": "Treaty of Versailles",
+    "year": 1919,
+    "description": "The peace treaty that ended World War I, imposing harsh penalties on Germany and redrawing European borders.",
+    "context": "The treaty's terms were controversial and contributed to the rise of Nazi Germany, leading to World War II.",
+    "image": "treaty-of-versailles"
+  },
+  {
+    "id": "great-depression",
+    "title": "The Great Depression",
+    "year": 1929,
+    "description": "A severe worldwide economic depression that started in the United States after the stock market crash.",
+    "context": "The Great Depression had devastating effects on economies worldwide, leading to political changes and the rise of totalitarian regimes in some countries.",
+    "image": "great-depression"
+  },
+  {
+    "id": "holocaust",
+    "title": "The Holocaust",
+    "year": 1941,
+    "description": "The systematic genocide of six million Jews and millions of others by Nazi Germany during World War II.",
+    "context": "The Holocaust remains one of the darkest chapters in history, fundamentally altering global attitudes toward human rights and justice.",
+    "image": "holocaust"
+  },
+  {
+    "id": "atomic-bombing-japan",
+    "title": "Atomic Bombing of Japan",
+    "year": 1945,
+    "description": "The United States dropped atomic bombs on the cities of Hiroshima and Nagasaki, leading to Japan's surrender in World War II.",
+    "context": "This marked the first and only use of nuclear weapons in warfare and brought about the end of World War II.",
+    "image": "atomic-bombing-japan"
+  },
+  {
+    "id": "united-nations-founded",
+    "title": "Founding of the United Nations",
+    "year": 1945,
+    "description": "The establishment of the United Nations to promote international cooperation and prevent future conflicts after World War II.",
+    "context": "The United Nations has played a critical role in peacekeeping, human rights, and international diplomacy in the postwar world.",
+    "image": "united-nations"
+  },
+  {
+    "id": "cold-war-begins",
+    "title": "The Cold War Begins",
+    "year": 1947,
+    "description": "A period of geopolitical tension between the Soviet Union and the United States, leading to a global ideological and military rivalry.",
+    "context": "The Cold War shaped global politics for nearly half a century, affecting everything from military strategy to cultural movements.",
+    "image": "cold-war"
+  },
+  {
+    "id": "chinese-civil-war",
+    "title": "Chinese Civil War",
+    "year": 1927,
+    "description": "A civil war between the Chinese Nationalist Party (Kuomintang) and the Chinese Communist Party, which culminated in the establishment of the People's Republic of China in 1949.",
+    "context": "The victory of the Communist Party under Mao Zedong reshaped China and had lasting implications for the Cold War.",
+    "image": "chinese-civil-war"
+  },
+  {
+    "id": "korean-war",
+    "title": "Korean War",
+    "year": 1950,
+    "description": "A war between North Korea (backed by China and the Soviet Union) and South Korea (backed by the United States and United Nations).",
+    "context": "The Korean War solidified the division of Korea into two nations, influencing the Cold War dynamics in East Asia.",
+    "image": "korean-war"
+  },
+  {
+    "id": "space-race",
+    "title": "The Space Race",
+    "year": 1957,
+    "description": "A competition between the Soviet Union and the United States to achieve significant space exploration milestones.",
+    "context": "The Space Race led to monumental achievements such as the launch of Sputnik and the Apollo moon landing, contributing to technological advancement.",
+    "image": "space-race"
+  },
+  {
+    "id": "cuban-missile-crisis",
+    "title": "Cuban Missile Crisis",
+    "year": 1962,
+    "description": "A 13-day confrontation between the United States and the Soviet Union over Soviet ballistic missiles in Cuba.",
+    "context": "The crisis brought the world to the brink of nuclear war, but ultimately led to a peaceful resolution and the establishment of a direct communication line between the superpowers.",
+    "image": "cuban-missile-crisis"
+  },
+  {
+    "id": "vietnam-war",
+    "title": "Vietnam War",
+    "year": 1955,
+    "description": "A conflict between communist North Vietnam and anti-communist South Vietnam, with heavy U.S. involvement in support of the South.",
+    "context": "The war ended in 1975 with the fall of Saigon, leading to the unification of Vietnam under communist rule and a reevaluation of U.S. foreign policy.",
+    "image": "vietnam-war"
+  },
+  {
+    "id": "end-of-apartheid",
+    "title": "End of Apartheid in South Africa",
+    "year": 1994,
+    "description": "The end of institutionalized racial segregation and discrimination in South Africa, culminating in the election of Nelson Mandela as president.",
+    "context": "The dismantling of apartheid marked a turning point in the global struggle for human rights and racial equality.",
+    "image": "end-of-apartheid"
+  },
+  {
+    "id": "fall-of-soviet-union",
+    "title": "Fall of the Soviet Union",
+    "year": 1991,
+    "description": "The dissolution of the Soviet Union, resulting in the independence of 15 republics and the end of communist rule in Russia.",
+    "context": "The fall of the Soviet Union marked the end of the Cold War and led to significant political and economic transformations in Eastern Europe and Central Asia.",
+    "image": "fall-of-soviet-union"
+  },
+  {
+    "id": "civil-war-rwanda",
+    "title": "Rwandan Civil War and Genocide",
+    "year": 1994,
+    "description": "A brutal civil war in Rwanda, leading to the genocide of approximately 800,000 Tutsis and moderate Hutus.",
+    "context": "The Rwandan genocide highlighted the international community’s failure to intervene and left a lasting impact on global humanitarian efforts.",
+    "image": "rwandan-genocide"
+  },
+  {
+    "id": "end-of-colonialism",
+    "title": "End of Colonialism in Africa",
+    "year": 1960,
+    "description": "A year when many African nations gained independence from European colonial powers.",
+    "context": "The wave of independence movements in Africa led to the formation of new nations and the end of European colonial control over much of the continent.",
+    "image": "end-of-colonialism-africa"
+  },
+  {
+    "id": "panama-canal-completion",
+    "title": "Completion of the Panama Canal",
+    "year": 1914,
+    "description": "The Panama Canal was completed, linking the Atlantic and Pacific Oceans and revolutionizing global trade.",
+    "context": "The canal transformed global shipping and played a strategic role in U.S. foreign policy and military strategy.",
+    "image": "panama-canal"
+  },
+  {
+    "id": "suez-crisis",
+    "title": "Suez Crisis",
+    "year": 1956,
+    "description": "A diplomatic and military conflict between Egypt, Israel, the United Kingdom, and France, triggered by Egypt’s nationalization of the Suez Canal.",
+    "context": "The crisis revealed the diminishing influence of European powers and the growing importance of the United States and the Soviet Union in Middle Eastern affairs.",
+    "image": "suez-crisis"
+  },
+  {
+    "id": "battle-of-waterloo",
+    "title": "Battle of Waterloo",
+    "year": 1815,
+    "description": "Napoleon Bonaparte was defeated at the Battle of Waterloo, ending his reign as Emperor of France and leading to his exile.",
+    "context": "This battle marked the end of the Napoleonic Wars and the restoration of the Bourbon monarchy in France.",
+    "image": "battle-of-waterloo"
+  },
+  {
+    "id": "congress-of-vienna",
+    "title": "Congress of Vienna",
+    "year": 1814,
+    "description": "The Congress of Vienna was convened to re-draw the map of Europe after Napoleon's defeat and establish a new balance of power.",
+    "context": "The decisions made at the Congress set the stage for European politics for much of the 19th century and aimed to prevent future widespread conflicts.",
+    "image": "congress-of-vienna"
+  },
+  {
+    "id": "industrial-revolution",
+    "title": "Industrial Revolution Begins",
+    "year": 1800,
+    "description": "A period of profound economic and technological change, where industrialization began in Great Britain and spread globally.",
+    "context": "The Industrial Revolution transformed societies, shifting economies from agrarian to industrial, and changing social structures and global trade.",
+    "image": "industrial-revolution"
+  },
+  {
+    "id": "latin-american-independence",
+    "title": "Latin American Wars of Independence",
+    "year": 1810,
+    "description": "A series of revolutions led by figures like Simón Bolívar and José de San Martín, which led to the independence of most Latin American countries from Spain.",
+    "context": "These independence movements significantly reshaped the political landscape of the Americas and inspired other anti-colonial movements worldwide.",
+    "image": "latin-american-independence"
+  },
+  {
+    "id": "trail-of-tears",
+    "title": "Trail of Tears",
+    "year": 1838,
+    "description": "The forced relocation of Native American tribes from their ancestral lands to territories west of the Mississippi River under the Indian Removal Act.",
+    "context": "The Trail of Tears resulted in the deaths of thousands of Native Americans and represents a dark chapter in U.S. history regarding indigenous rights.",
+    "image": "trail-of-tears"
+  },
+  {
+    "id": "revolutions-of-1848",
+    "title": "Revolutions of 1848",
+    "year": 1848,
+    "description": "A series of political upheavals across Europe, where people demanded more political freedom, social justice, and national unification.",
+    "context": "Although most of the revolutions were suppressed, they set the stage for later democratic movements and the eventual unification of Germany and Italy.",
+    "image": "revolutions-of-1848"
+  },
+  {
+    "id": "slave-trade-abolished",
+    "title": "Abolition of the Transatlantic Slave Trade",
+    "year": 1807,
+    "description": "Britain passed the Abolition of the Slave Trade Act, ending its involvement in the transatlantic slave trade, followed by other nations.",
+    "context": "This event was part of the broader abolitionist movement that led to the eventual end of slavery in much of the Western world.",
+    "image": "abolition-of-slave-trade"
+  },
+  {
+    "id": "crimean-war",
+    "title": "Crimean War",
+    "year": 1853,
+    "description": "A conflict between Russia and an alliance of the Ottoman Empire, France, Britain, and Sardinia over territorial disputes in the Black Sea region.",
+    "context": "The Crimean War weakened Russia and altered the balance of power in Europe, leading to shifts in alliances and military strategies.",
+    "image": "crimean-war"
+  },
+  {
+    "id": "opium-wars",
+    "title": "Opium Wars",
+    "year": 1839,
+    "description": "Two wars fought between China and Britain (later joined by France), primarily over the trade of opium, which resulted in China's defeat.",
+    "context": "The wars led to the Treaty of Nanking, which opened up Chinese ports to British trade, and marked the beginning of the 'Century of Humiliation' for China.",
+    "image": "opium-wars"
+  },
+  {
+    "id": "unification-of-germany",
+    "title": "Unification of Germany",
+    "year": 1871,
+    "description": "The process of unifying numerous independent German states into a single nation-state under Prussian leadership, culminating in the creation of the German Empire.",
+    "context": "The unification of Germany reshaped the balance of power in Europe, leading to tensions that would contribute to World War I.",
+    "image": "german-unification"
+  },
+  {
+    "id": "meiji-restoration",
+    "title": "Meiji Restoration",
+    "year": 1868,
+    "description": "The restoration of imperial rule in Japan under Emperor Meiji, which led to rapid modernization and the end of Japan’s feudal system.",
+    "context": "The Meiji Restoration transformed Japan into a modern industrial power, making it a major player in global affairs.",
+    "image": "meiji-restoration"
+  },
+  {
+    "id": "american-civil-war",
+    "title": "American Civil War",
+    "year": 1861,
+    "description": "A conflict between the Northern Union states and Southern Confederacy over issues including slavery, states' rights, and territorial expansion.",
+    "context": "The war led to the abolition of slavery in the United States and reshaped the political and economic landscape of the country.",
+    "image": "american-civil-war"
+  },
+  {
+    "id": "emancipation-proclamation",
+    "title": "Emancipation Proclamation",
+    "year": 1863,
+    "description": "Issued by President Abraham Lincoln, it declared the freedom of slaves in Confederate-held territories during the American Civil War.",
+    "context": "The proclamation shifted the war's focus to include the abolition of slavery as a primary goal and paved the way for the Thirteenth Amendment.",
+    "image": "emancipation-proclamation"
+  },
+  {
+    "id": "first-transcontinental-railroad",
+    "title": "Completion of the First Transcontinental Railroad",
+    "year": 1869,
+    "description": "The completion of the first transcontinental railroad in the United States, linking the eastern and western coasts.",
+    "context": "The railroad revolutionized transportation, boosted the U.S. economy, and contributed to the expansion of the American frontier.",
+    "image": "transcontinental-railroad"
+  },
+  {
+    "id": "suez-canal-opening",
+    "title": "Opening of the Suez Canal",
+    "year": 1869,
+    "description": "The completion of the Suez Canal, a man-made waterway linking the Mediterranean Sea to the Red Sea, facilitating global trade.",
+    "context": "The Suez Canal dramatically shortened maritime trade routes between Europe and Asia and became a key geopolitical asset.",
+    "image": "suez-canal-opening"
+  },
+  {
+    "id": "french-revolution-1830",
+    "title": "July Revolution of 1830",
+    "year": 1830,
+    "description": "A revolution in France that led to the overthrow of the Bourbon monarchy and the rise of the July Monarchy under King Louis-Philippe.",
+    "context": "The revolution reflected growing discontent with monarchies in Europe and influenced later uprisings in other countries.",
+    "image": "july-revolution"
+  },
+  {
+    "id": "kingdom-of-italy-unification",
+    "title": "Unification of Italy",
+    "year": 1861,
+    "description": "The consolidation of various Italian states into the Kingdom of Italy, led by figures like Giuseppe Garibaldi and Count Cavour.",
+    "context": "The unification of Italy marked the end of centuries of fragmentation and altered the balance of power in Europe.",
+    "image": "italian-unification"
+  },
+  {
+    "id": "zulu-wars",
+    "title": "Zulu Wars",
+    "year": 1879,
+    "description": "A conflict between the British Empire and the Zulu Kingdom in South Africa, culminating in the Battle of Isandlwana.",
+    "context": "The Zulu Wars were a major episode in the British colonization of South Africa and are known for the Zulu's valiant resistance.",
+    "image": "zulu-wars"
+  },
+  {
+    "id": "boxer-rebellion",
+    "title": "Boxer Rebellion",
+    "year": 1899,
+    "description": "An anti-imperialist, anti-Christian uprising in China, led by the 'Boxers', aimed at expelling foreign influence.",
+    "context": "The rebellion was crushed by an eight-nation alliance, but it highlighted Chinese resentment of foreign powers and led to reforms in China.",
+    "image": "boxer-rebellion"
+  },
+  {
+    "id": "scramble-for-africa",
+    "title": "Scramble for Africa",
+    "year": 1881,
+    "description": "The rapid colonization of Africa by European powers, culminating in the Berlin Conference of 1884-85.",
+    "context": "The Scramble for Africa carved up the continent, leading to the exploitation of resources and significant cultural and political changes.",
+    "image": "scramble-for-africa"
+  },
+  {
+    "id": "dreyfus-affair",
+    "title": "Dreyfus Affair",
+    "year": 1894,
+    "description": "A political scandal in France involving the wrongful conviction of Jewish officer Alfred Dreyfus for treason.",
+    "context": "The Dreyfus Affair exposed deep divisions in French society regarding anti-Semitism, military integrity, and political justice.",
+    "image": "dreyfus-affair"
+  },
+  {
+    "id": "women-right-to-vote",
+    "title": "Women’s Suffrage Movement",
+    "year": 1848,
+    "description": "The first organized movement for women’s right to vote, beginning with the Seneca Falls Convention in the United States.",
+    "context": "This movement was the precursor to global suffrage efforts, culminating in women's right to vote in numerous countries during the 20th century.",
+    "image": "women-suffrage"
+  },
+  {
+    "id": "victorian-era",
+    "title": "Victorian Era",
+    "year": 1837,
+    "description": "The period during Queen Victoria's reign over the United Kingdom, marked by industrial progress, imperialism, and cultural change.",
+    "context": "The Victorian Era was a time of social reform, rapid industrialization, and the expansion of the British Empire.",
+    "image": "victorian-era"
+  },
+    {
+      "id": "founding-united-states",
+      "title": "American Revolution",
+      "year": 1775,
+      "description": "The Thirteen American Colonies revolted against British rule, leading to the creation of the United States of America.",
+      "context": "The revolution was a significant turning point in world history, marking the emergence of a new democratic republic and inspiring future independence movements globally.",
+      "image": "american-revolution"
+    },
+    {
+      "id": "signing-declaration-independence",
+      "title": "Signing of the Declaration of Independence",
+      "year": 1776,
+      "description": "The Continental Congress formally declared independence from Great Britain on July 4, 1776.",
+      "context": "This declaration laid the foundation for the United States and its democratic principles, marking a pivotal moment in world history.",
+      "image": "declaration-of-independence"
+    },
+    {
+      "id": "treaty-of-paris",
+      "title": "Treaty of Paris (1783)",
+      "year": 1783,
+      "description": "The treaty that ended the American Revolution, recognizing the independence of the United States and establishing borders.",
+      "context": "This treaty reshaped the map of North America and had lasting implications for European colonial holdings in the Americas.",
+      "image": "treaty-of-paris"
+    },
+    {
+      "id": "storming-of-bastille",
+      "title": "Storming of the Bastille",
+      "year": 1789,
+      "description": "The Bastille prison in Paris was stormed by revolutionary forces, symbolizing the start of the French Revolution.",
+      "context": "This event marked the beginning of a larger revolution that led to the end of absolute monarchy and the rise of the French Republic.",
+      "image": "storming-of-bastille"
+    },
+    {
+      "id": "french-revolution",
+      "title": "French Revolution",
+      "year": 1789,
+      "description": "A period of social and political upheaval in France, leading to the fall of the monarchy and the establishment of a republic.",
+      "context": "The French Revolution reshaped not only France but also influenced revolutionary movements across Europe and the world.",
+      "image": "french-revolution"
+    },
+    {
+      "id": "reign-of-terror",
+      "title": "Reign of Terror",
+      "year": 1793,
+      "description": "A period during the French Revolution characterized by extreme violence and political purges led by the Committee of Public Safety.",
+      "context": "The Reign of Terror marked a radical phase of the revolution, which included mass executions and significant societal upheaval.",
+      "image": "reign-of-terror"
+    },
+    {
+      "id": "napoleon-bonaparte-rise",
+      "title": "Napoleon Bonaparte’s Rise to Power",
+      "year": 1799,
+      "description": "Napoleon Bonaparte took control of France following a coup d'état, eventually becoming Emperor of the French.",
+      "context": "Napoleon's rise to power marked the beginning of the Napoleonic Wars, which reshaped European borders and politics.",
+      "image": "napoleon-bonaparte"
+    },
+    {
+      "id": "british-east-india-company",
+      "title": "British East India Company Expands in India",
+      "year": 1757,
+      "description": "The British East India Company took control of India after defeating the forces of the Nawab of Bengal at the Battle of Plassey.",
+      "context": "This event marked the beginning of British colonial rule in India, which lasted for nearly two centuries.",
+      "image": "british-east-india-company"
+    },
+    {
+      "id": "king-george-iii-reigns",
+      "title": "King George III’s Reign",
+      "year": 1760,
+      "description": "King George III became King of Great Britain, overseeing major events such as the American Revolution and the Napoleonic Wars.",
+      "context": "His reign saw significant political, military, and social changes in Britain, including the loss of its American colonies.",
+      "image": "king-george-iii"
+    },
+    {
+      "id": "abolition-of-slavery-uk",
+      "title": "Abolition of the Slave Trade in the UK",
+      "year": 1807,
+      "description": "The British Parliament passed the Act for the Abolition of the Slave Trade, ending the transatlantic slave trade in the British Empire.",
+      "context": "This was a significant victory for the abolitionist movement and set a precedent for other countries to follow.",
+      "image": "abolition-of-slave-trade"
+    },
+    {
+      "id": "discovery-of-pacific-ocean",
+      "title": "Discovery of the Pacific Ocean by Europeans",
+      "year": 1513,
+      "description": "Vasco Núñez de Balboa, a Spanish explorer, became the first European to sight the Pacific Ocean from the Americas.",
+      "context": "This event opened up new exploration routes and contributed to Spain's dominance in the Americas during the Age of Exploration.",
+      "image": "discovery-of-pacific-ocean"
+    },
+    {
+      "id": "suez-canal-construction",
+      "title": "Construction of the Suez Canal Begins",
+      "year": 1859,
+      "description": "The construction of the Suez Canal began, aiming to connect the Mediterranean Sea with the Red Sea, revolutionizing global trade.",
+      "context": "The canal has had a lasting impact on global commerce, facilitating faster trade routes between Europe and Asia.",
+      "image": "suez-canal"
+    },
+    {
+      "id": "great-fire-london",
+      "title": "Great Fire of London",
+      "year": 1666,
+      "description": "A massive fire destroyed much of central London, including 87 churches and thousands of homes, but resulted in relatively few deaths.",
+      "context": "The fire led to major urban planning reforms and the reconstruction of London with better safety standards.",
+      "image": "great-fire-london"
+    },
+    {
+      "id": "founding-of-penny-post",
+      "title": "Founding of the Penny Post",
+      "year": 1840,
+      "description": "The establishment of the Penny Post in Britain revolutionized the postal system by offering a uniform, affordable rate for letters.",
+      "context": "This innovation greatly enhanced communication and is considered a precursor to modern postal systems worldwide.",
+      "image": "penny-post"
+    },
+    {
+      "id": "enlightenment",
+      "title": "The Enlightenment",
+      "year": 1715,
+      "description": "An intellectual movement emphasizing reason, individualism, and skepticism of authority, which profoundly influenced Western societies.",
+      "context": "The Enlightenment laid the philosophical foundation for modern democracy, human rights, and scientific progress.",
+      "image": "enlightenment"
+    },
+    {
+      "id": "peter-the-great-reforms",
+      "title": "Peter the Great’s Reforms",
+      "year": 1682,
+      "description": "Peter the Great ascended to the Russian throne and introduced wide-ranging reforms to modernize Russia, including the military and bureaucracy.",
+      "context": "Peter's reforms brought Russia closer to European standards, eventually making it a major European power.",
+      "image": "peter-the-great"
+    },
+    {
+      "id": "victoria-reign-begins",
+      "title": "Queen Victoria’s Reign Begins",
+      "year": 1837,
+      "description": "Queen Victoria ascended to the throne of the United Kingdom, beginning the Victorian Era, a period of significant political, cultural, and industrial change.",
+      "context": "Her reign solidified British imperial power and saw advances in industry, science, and social reform.",
+      "image": "queen-victoria"
+    },
+    {
+      "id": "reign-of-charles-x",
+      "title": "Reign of Charles X",
+      "year": 1824,
+      "description": "Charles X became King of France, but his conservative policies led to the July Revolution of 1830, which ended the Bourbon monarchy.",
+      "context": "His reign marked the end of the Bourbon Restoration and the rise of the July Monarchy under Louis-Philippe.",
+      "image": "charles-x"
+    },
+    {
+      "id": "reign-of-francis-i",
+      "title": "Reign of Francis I of Austria",
+      "year": 1792,
+      "description": "Francis I became Emperor of Austria, leading the Austrian Empire through the Napoleonic Wars and the Congress of Vienna.",
+      "context": "His reign was pivotal in maintaining the balance of power in Europe after the upheavals caused by Napoleon.",
+      "image": "francis-i"
+    },
+    {
+      "id": "colonization-africa",
+      "title": "Colonization of Africa",
+      "year": 1881,
+      "description": "The scramble for Africa intensified as European powers colonized almost the entire continent, dividing it into spheres of influence.",
+      "context": "The Berlin Conference of 1884-85 formalized this division and had lasting consequences on African political, social, and economic structures.",
+      "image": "colonization-africa"
+    },
+    {
+      "id": "invention-of-spinning-jenny",
+      "title": "Invention of the Spinning Jenny",
+      "year": 1764,
+      "description": "James Hargreaves invented the Spinning Jenny, a revolutionary machine that significantly increased yarn production during the Industrial Revolution.",
+      "context": "The Spinning Jenny was one of the key innovations that fueled the growth of the textile industry and industrialized economies.",
+      "image": "spinning-jenny"
+    },
+    {
+      "id": "founding-hong-kong",
+      "title": "Founding of Hong Kong",
+      "year": 1842,
+      "description": "Hong Kong was ceded to Britain after the First Opium War, becoming a British colony and a major port for trade in Asia.",
+      "context": "Hong Kong's status as a British colony played a crucial role in global trade and led to its modern identity as an international city.",
+      "image": "founding-hong-kong"
+    },
+    {
+      "id": "first-english-fleet",
+      "title": "First English Fleet",
+      "year": 1700,
+      "description": "The first official English fleet was established, marking the beginning of the expansion of English naval power.",
+      "context": "This was key to establishing British dominance over the seas, which supported imperial expansion and global trade.",
+      "image": "first-english-fleet"
+    },
+    {
+      "id": "covid-19-pandemic",
+      "title": "COVID-19 Pandemic",
+      "year": 2019,
+      "description": "A global pandemic caused by the novel coronavirus (SARS-CoV-2), leading to widespread illness, death, and significant economic and social disruption.",
+      "context": "The COVID-19 pandemic has had profound effects on global health, economies, and everyday life, with long-term impacts expected in various sectors.",
+      "image": "covid-19-pandemic"
+    },
+    {
+      "id": "global-financial-crisis",
+      "title": "Global Financial Crisis",
+      "year": 2008,
+      "description": "A global economic downturn triggered by the collapse of major financial institutions, primarily in the U.S. due to subprime mortgage failures.",
+      "context": "The crisis led to widespread economic recession, significant government bailouts, and reforms in global financial regulations.",
+      "image": "global-financial-crisis"
+    }]

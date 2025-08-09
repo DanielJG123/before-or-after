@@ -23,6 +23,7 @@ export const GameInterface: React.FC = () => {
     isRevealed,
     selectedAnswer,
     isCorrect,
+    isLoading,
     selectAnswer,
     nextQuestion,
     resetGame
@@ -52,12 +53,26 @@ export const GameInterface: React.FC = () => {
   console.log('Right event:', rightEvent);
   console.log('Is game complete:', isGameComplete);
 
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background p-4">
+        <div className="text-center space-y-4">
+          <div className="text-2xl font-bold text-foreground">Loading Game...</div>
+          <div className="text-muted-foreground">
+            Fetching historical events...
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Show debug info if no events
   if (!leftEvent || !rightEvent) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background p-4">
         <div className="text-center space-y-4">
-          <div className="text-2xl font-bold text-foreground">Loading Game...</div>
+          <div className="text-2xl font-bold text-foreground">No Events Available</div>
           <div className="text-muted-foreground">
             Debug: leftEvent is {leftEvent ? 'available' : 'null'}, rightEvent is {rightEvent ? 'available' : 'null'}
           </div>
@@ -98,7 +113,11 @@ export const GameInterface: React.FC = () => {
             )}
           </div>
 
-          <Button onClick={resetGame} size="lg" className="w-full">
+          <Button 
+            onClick={() => resetGame()} 
+            size="lg" 
+            className="w-full"
+          >
             <RotateCcw className="h-4 w-4 mr-2" />
             Play Again
           </Button>
@@ -117,7 +136,7 @@ export const GameInterface: React.FC = () => {
             <Button
               variant="outline"
               size="sm"
-              onClick={resetGame}
+              onClick={() => resetGame()}
               className="gap-2"
             >
               <RotateCcw className="h-3 w-3" />
