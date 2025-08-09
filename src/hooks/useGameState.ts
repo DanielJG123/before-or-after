@@ -12,6 +12,8 @@ interface GameState {
   isCorrect: boolean | null;
   usedEventIds: string[];
   isLoading: boolean;
+  isGameOver: boolean;
+  isGameWon: boolean;
 }
 
 interface GameActions {
@@ -21,7 +23,7 @@ interface GameActions {
   resetGame: () => void;
 }
 
-const TOTAL_QUESTIONS = 10;
+// Game continues until wrong answer or dataset exhausted
 
 export const useGameState = (): GameState & GameActions => {
   console.log('useGameState hook initializing...');
@@ -36,7 +38,9 @@ export const useGameState = (): GameState & GameActions => {
     selectedAnswer: null,
     isCorrect: null,
     usedEventIds: [],
-    isLoading: true
+    isLoading: true,
+    isGameOver: false,
+    isGameWon: false
   }));
 
   // Initialize the game with first pair
@@ -87,7 +91,9 @@ export const useGameState = (): GameState & GameActions => {
         selectedAnswer: null,
         isCorrect: null,
         usedEventIds: [newPair[0].id, newPair[1].id],
-        isLoading: false
+        isLoading: false,
+        isGameOver: false,
+        isGameWon: false
       });
     } catch (error) {
       console.error('Error starting new game:', error);
@@ -110,13 +116,13 @@ export const useGameState = (): GameState & GameActions => {
       isRevealed: true,
       score: isCorrect ? prev.score + 1 : prev.score,
       streak: isCorrect ? prev.streak + 1 : 0,
-      questionsAnswered: prev.questionsAnswered + 1
+      questionsAnswered: prev.questionsAnswered + 1,
+      isGameOver: !isCorrect // Game ends on wrong answer
     }));
   }, [gameState.leftEvent, gameState.rightEvent, gameState.isRevealed]);
 
   const nextQuestion = useCallback(() => {
-    if (gameState.questionsAnswered >= TOTAL_QUESTIONS) {
-      // Game is complete
+    if (gameState.isGameOver) {
       return;
     }
 
@@ -125,6 +131,17 @@ export const useGameState = (): GameState & GameActions => {
       
       // getRandomEventPair is now synchronous
       const newPair = getRandomEventPair([...gameState.usedEventIds, gameState.rightEvent!.id]);
+      
+      if (!newPair) {
+        // No more events available - player wins!
+        setGameState(prev => ({
+          ...prev,
+          isGameWon: true,
+          isLoading: false
+        }));
+        return;
+      }
+      
       const newEvent = newPair[0];
       
       setGameState(prev => ({
@@ -139,9 +156,14 @@ export const useGameState = (): GameState & GameActions => {
       }));
     } catch (error) {
       console.error('Error getting next question:', error);
-      setGameState(prev => ({ ...prev, isLoading: false }));
+      // Assume dataset exhausted if error getting new pair
+      setGameState(prev => ({
+        ...prev,
+        isGameWon: true,
+        isLoading: false
+      }));
     }
-  }, [gameState.questionsAnswered, gameState.usedEventIds, gameState.rightEvent]);
+  }, [gameState.isGameOver, gameState.usedEventIds, gameState.rightEvent]);
 
   const resetGame = useCallback(() => {
     startNewGame();
@@ -156,4 +178,4 @@ export const useGameState = (): GameState & GameActions => {
   };
 };
 
-export const GAME_TOTAL_QUESTIONS = TOTAL_QUESTIONS;
+// No more total questions limit - game continues until wrong answer
