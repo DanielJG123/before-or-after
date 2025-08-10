@@ -5,7 +5,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { GameCard } from './GameCard';
 import { ScoreDisplay } from './ScoreDisplay';
 import { ProgressIndicator } from './ProgressIndicator';
-import { useGameState, GAME_TOTAL_QUESTIONS } from '@/hooks/useGameState';
+import { useGameState } from '@/hooks/useGameState';
 import { toast } from '@/hooks/use-toast';
 
 export const GameInterface: React.FC = () => {
@@ -24,6 +24,8 @@ export const GameInterface: React.FC = () => {
     selectedAnswer,
     isCorrect,
     isLoading,
+    isGameOver,
+    isGameWon,
     selectAnswer,
     nextQuestion,
     resetGame
@@ -32,11 +34,11 @@ export const GameInterface: React.FC = () => {
   const [scoreAnimating, setScoreAnimating] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
-  const isGameComplete = questionsAnswered >= GAME_TOTAL_QUESTIONS;
+  // Game is complete when player loses or wins
 
   // Auto-transition after correct answer with proper timing
   useEffect(() => {
-    if (isRevealed && !isGameComplete && isCorrect) {
+    if (isRevealed && !isGameOver && !isGameWon && isCorrect) {
       const timer = setTimeout(() => {
         setIsTransitioning(true);
         // Delay the actual state change to allow animation to complete
@@ -47,11 +49,11 @@ export const GameInterface: React.FC = () => {
       }, 1200); // Show result for a bit longer
       return () => clearTimeout(timer);
     }
-  }, [isRevealed, isGameComplete, isCorrect, nextQuestion]);
+  }, [isRevealed, isGameOver, isGameWon, isCorrect, nextQuestion]);
 
   console.log('Left event:', leftEvent);
   console.log('Right event:', rightEvent);
-  console.log('Is game complete:', isGameComplete);
+  console.log('Is game over:', isGameOver, 'Is game won:', isGameWon);
 
   // Show loading state
   if (isLoading) {
@@ -84,33 +86,77 @@ export const GameInterface: React.FC = () => {
     );
   }
 
-  if (isGameComplete) {
-    const accuracy = Math.round((score / GAME_TOTAL_QUESTIONS) * 100);
-    const grade = accuracy >= 80 ? '🏆 Expert' : accuracy >= 60 ? '🎯 Great' : accuracy >= 40 ? '📚 Good' : '🌱 Learning';
+  // Game Over Screen (when player loses)
+  if (isGameOver && !isCorrect) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4 relative">
+        {/* Blurred background events */}
+        <div className="absolute inset-0 blur-sm opacity-30">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto h-full">
+            <div className="space-y-6">
+              <GameCard
+                event={leftEvent!}
+                onClick={() => {}}
+                isSelected={false}
+                isRevealed={true}
+                isCorrect={undefined}
+              />
+            </div>
+            <div className="space-y-6">
+              <GameCard
+                event={rightEvent!}
+                onClick={() => {}}
+                isSelected={false}
+                isRevealed={true}
+                isCorrect={false}
+              />
+            </div>
+          </div>
+        </div>
+        
+        {/* Game Over Content */}
+        <div className="max-w-md w-full text-center space-y-6 relative z-10 bg-background/90 backdrop-blur-sm rounded-2xl p-8 border">
+          <div className="space-y-4">
+            <h1 className="text-4xl font-bold text-foreground">Game Over!</h1>
+            <div className="text-6xl font-bold text-primary">{score}</div>
+            <p className="text-lg text-muted-foreground">Correct answers in a row</p>
+          </div>
 
+          <div className="bg-card rounded-xl p-4 border shadow-sm space-y-2">
+            <h3 className="font-semibold text-foreground">Your mistake:</h3>
+            <p className="text-sm text-muted-foreground">
+              You said <strong>{rightEvent?.title}</strong> happened <strong>{selectedAnswer}</strong> <strong>{leftEvent?.title}</strong>, but it actually happened {rightEvent!.year > leftEvent!.year ? 'after' : 'before'} ({rightEvent?.year} vs {leftEvent?.year}).
+            </p>
+          </div>
+
+          <Button 
+            onClick={() => resetGame()} 
+            size="lg" 
+            className="w-full"
+          >
+            <RotateCcw className="h-4 w-4 mr-2" />
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // Game Won Screen (dataset exhausted)
+  if (isGameWon) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <div className="max-w-md w-full text-center space-y-6">
-          <div className="space-y-2">
-            <Trophy className="h-16 w-16 text-accent mx-auto" />
-            <h1 className="text-3xl font-bold text-foreground">Game Complete!</h1>
-            <p className="text-muted-foreground">Nice work exploring history!</p>
+          <div className="space-y-4">
+            <Trophy className="h-20 w-20 text-yellow-500 mx-auto" />
+            <h1 className="text-4xl font-bold text-foreground">Congratulations!</h1>
+            <p className="text-lg text-muted-foreground">You've mastered all historical events!</p>
           </div>
 
           <div className="bg-card rounded-xl p-6 border shadow-sm space-y-4">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">{score}/{GAME_TOTAL_QUESTIONS}</div>
-              <div className="text-lg text-muted-foreground">{accuracy}% accuracy</div>
-              <div className="text-sm text-accent-foreground font-medium">{grade}</div>
-            </div>
-            
-            {streak > 2 && (
-              <div className="bg-accent/20 rounded-lg p-3 border border-accent/30">
-                <div className="text-sm font-medium text-accent-foreground">
-                  Best streak: {streak} correct in a row! 🔥
-                </div>
-              </div>
-            )}
+            <div className="text-6xl font-bold text-primary">{score}</div>
+            <div className="text-lg text-muted-foreground">Perfect score!</div>
+            <div className="text-sm text-accent-foreground font-medium">🏆 History Master</div>
           </div>
 
           <Button 
@@ -144,11 +190,7 @@ export const GameInterface: React.FC = () => {
             </Button>
           </div>
 
-          <div className="space-y-4">
-            <ProgressIndicator 
-              current={questionsAnswered + 1} 
-              total={GAME_TOTAL_QUESTIONS} 
-            />
+          <div className="flex justify-center">
             <ScoreDisplay
               score={score}
               streak={streak}
@@ -194,18 +236,20 @@ export const GameInterface: React.FC = () => {
             
             {/* Right Event (To Compare) */}
             <div className="space-y-6">
-              <GameCard
-                event={rightEvent}
-                onClick={() => {}}
-                isSelected={false}
-                isRevealed={isRevealed}
-                isCorrect={isCorrect}
-                className={`transition-all duration-600 ease-in-out ${
-                  isTransitioning 
-                    ? 'opacity-0 transform -translate-x-4' 
-                    : 'opacity-100 transform translate-x-0'
-                }`}
-              />
+              <div className={!isRevealed ? 'blur-sm' : ''}>
+                <GameCard
+                  event={rightEvent}
+                  onClick={() => {}}
+                  isSelected={false}
+                  isRevealed={isRevealed}
+                  isCorrect={isCorrect}
+                  className={`transition-all duration-600 ease-in-out ${
+                    isTransitioning 
+                      ? 'opacity-0 transform -translate-x-4' 
+                      : 'opacity-100 transform translate-x-0'
+                  }`}
+                />
+              </div>
               
               {/* Before/After Buttons or Revealed Date */}
               <div className="space-y-4">
