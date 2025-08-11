@@ -1,7 +1,5 @@
 // Duplicate detection utilities for topics
 
-import { createHash } from 'crypto';
-
 interface TopicKey {
   period: {
     label: string;
@@ -13,16 +11,25 @@ interface TopicKey {
 }
 
 /**
+ * Generate SHA-256 hash using Web Crypto API (browser-compatible)
+ */
+async function sha256Hash(data: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const dataBuffer = encoder.encode(data);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+/**
  * Generate a canonical topic key for exact duplicate detection
  */
-export function canonicalTopicKey(topic: TopicKey): string {
+export async function canonicalTopicKey(topic: TopicKey): Promise<string> {
   const { period, location, theme } = topic;
   const normalizedString = `${period.label}|${period.start_year}-${period.end_year}|${location}|${theme || 'general'}`;
   
   // SHA-256 hash for consistent key generation
-  return createHash('sha256')
-    .update(normalizedString.toLowerCase())
-    .digest('hex');
+  return await sha256Hash(normalizedString.toLowerCase());
 }
 
 /**
